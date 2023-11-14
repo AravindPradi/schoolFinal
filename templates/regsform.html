@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %">
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="static/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="static/css/aos.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet"   href="{% static 'css/custom.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/73b8cbfc03.js" crossorigin="anonymous"></script>
+    <script nonce="d78429df-e7ad-41ec-b7f0-c4a159d8666f">(function(w,d){!function(bb,bc,bd,be){bb[bd]=bb[bd]||{};bb[bd].executed=[];bb.zaraz={deferred:[],listeners:[]};bb.zaraz.q=[];bb.zaraz._f=function(bf){return async function(){var bg=Array.prototype.slice.call(arguments);bb.zaraz.q.push({m:bf,a:bg})}};for(const bh of["track","set","debug"])bb.zaraz[bh]=bb.zaraz._f(bh);bb.zaraz.init=()=>{var bi=bc.getElementsByTagName(be)[0],bj=bc.createElement(be),bk=bc.getElementsByTagName("title")[0];bk&&(bb[bd].t=bc.getElementsByTagName("title")[0].text);bb[bd].x=Math.random();bb[bd].w=bb.screen.width;bb[bd].h=bb.screen.height;bb[bd].j=bb.innerHeight;bb[bd].e=bb.innerWidth;bb[bd].l=bb.location.href;bb[bd].r=bc.referrer;bb[bd].k=bb.screen.colorDepth;bb[bd].n=bc.characterSet;bb[bd].o=(new Date).getTimezoneOffset();if(bb.dataLayer)for(const bo of Object.entries(Object.entries(dataLayer).reduce(((bp,bq)=>({...bp[1],...bq[1]})),{})))zaraz.set(bo[0],bo[1],{scope:"page"});bb[bd].q=[];for(;bb.zaraz.q.length;){const br=bb.zaraz.q.shift();bb[bd].q.push(br)}bj.defer=!0;for(const bs of[localStorage,sessionStorage])Object.keys(bs||{}).filter((bu=>bu.startsWith("_zaraz_"))).forEach((bt=>{try{bb[bd]["z_"+bt.slice(7)]=JSON.parse(bs.getItem(bt))}catch{bb[bd]["z_"+bt.slice(7)]=bs.getItem(bt)}}));bj.referrerPolicy="origin";bj.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(bb[bd])));bi.parentNode.insertBefore(bj,bi)};["complete","interactive"].includes(bc.readyState)?zaraz.init():bb.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script>
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<div class="site-wrap">
+<div class="site-mobile-menu site-navbar-target">
+<div class="site-mobile-menu-header">
+<div class="site-mobile-menu-close mt-3">
+
+</div>
+</div>
+<div class="site-mobile-menu-body"></div>
+</div>
+
+</div>
+<div class="col-12 col-md-10 d-none d-xl-block">
+<nav class="site-navigation  position-relative text-right" role="navigation">
+<ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+{% if user.is_authenticated %}
+<li class="nav-link">{{user.username}}</li>
+<li><a href="{% url 'credentials:logout' %}">Logout</a></li>
+{% endif %}
+</ul>
+</nav>
+</div>
+<div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
+</div>
+</div>
+</header>
+
+        <section class="site-section "  data-aos="fade">
+            <div class="container">
+                 <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title mb-3">FORM</h2>
+                    </div>
+                </div>
+                <div class="row mb-12">
+                    <div class="col-md-12 mb-5">
+                        <form method="post"  class="p-5 bg-white">
+                            {% csrf_token %}
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                     {{ form.name.errors }}
+                            <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}: </label>
+                            <input name="{{ form.name.html_name }}" type="text" class="form-control" placeholder="Enter your Name" id="{{ form.name.id_for_label }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.dob.errors }}
+                                    <label for="{{ form.dob.id_for_label }}">Date of Birth:</label>
+                                    <input name="{{ form.dob.html_name }}" type="text" class="form-control" placeholder="Enter your D.O.B" id="{{ form.dob.id_for_label }}" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    {{ form.age.errors }}
+                                    <label for="{{ form.age.id_for_label }}">Age:</label>
+                                    <input type="number" id="{{ form.age.id_for_label }}" placeholder="Enter your age" name="{{ form.age.html_name }}" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.gender.errors }}
+                                <label for="{{ form.gender.id_for_label }}">Gender:</label><br>
+                                    <label><input type="radio"  name="{{ form.gender.html_name }}" value="male"  required>Male</label>
+                                   <label><input type="radio"  name="{{ form.gender.html_name }}" value="female"  required>Female</label>
+                                    <label><input type="radio"  name="{{ form.gender.html_name }}" value="other"  required>Other</label>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    {{ form.mob_no.errors }}
+                                    <label class="text-black" for="{{ form.mob_no.id_for_label }}">Mob No:</label>
+                                    <input type="text" id="{{ form.mob_no.id_for_label }}" name="{{ form.mob_no.html_name }}" placeholder="Enter your Mobile No." class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.mail_id.errors }}
+                                <label class="text-black" for="{{ form.mail_id.id_for_label }}">Email:</label>
+                                <input type="email" id="{{ form.mail_id.id_for_label }}" name="{{ form.mail_id.html_name }}" placeholder="Enter your email Id" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="text-black" for="{{ form.address.id_for_label }}">Address:</label>
+                                    <textarea name="{{ form.address.html_name }}" id="{{ form.address.id_for_label }}" cols="15" rows="5" class="form-control" placeholder="Write your Address here..."></textarea>
+                                </div>
+                                <div class="col-md-6 mb-3 ">
+                                    {{ form.district.errors }}
+                                    <label class="text-black" >Department</label>
+                                    <select class="form-control" name="district" id="id_district">
+                                        <option value="" selected>Select Department</option>
+                                        {% for district in form.district.field.choices %}
+                                        <option value="{{ district.0 }}">{{ district.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                <label class="text-black" >{{ form.branch.label_tag }}</label>
+                                    <select class="form-control" name="branch" id="id_branch" >
+                                        <option value="" selected>Select Branch</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <label class="text-black" >{{ form.purpose.label_tag }}</label>
+                            {{ form.purpose }}
+                            <br>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label class="text-black" >Materials Required:</label>
+
+                                    <label class="text-black" >{{ form.book.label_tag }}</label> {{ form.book }}
+                                    {{ form.book.errors }}
+                                    <label class="text-black" >{{ form.pen.label_tag }}</label> {{ form.pen }}
+                                    {{ form.exam_papers.errors }}
+                                    <label class="text-black" >{{ form.exam_papers.label_tag }}</label> {{ form.exam_papers }}
+                                </div>
+                             </div>
+                             <div class="row form-group">
+                                <div class="col-md-12">
+                                    <input type="submit" value="SUBMIT" class="btn btn-primary btn-md text-white">
+                                    {% if message %}
+                                    <label class="text-black">{{message}}: </label><br>
+                                    {% endif %}
+                                </div>
+                             </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<script>
+document.getElementById('id_district').addEventListener('change', function() {
+    var districtSelect = document.getElementById('id_district');
+    var branchSelect = document.getElementById('id_branch');
+
+    if (districtSelect.value === '') {
+        branchSelect.disabled = true;
+        branchSelect.value = '';
+    } else {
+        branchSelect.disabled = false;
+   }
+});
+</script>
+
+    <script>
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
+
+
+
+
+
+
+        let district_field = document.getElementById("id_district")
+        let branch_field = document.getElementById("id_branch")
+
+        district_field.addEventListener("change", pickState)
+        function pickState(e){
+            district_id = e.target.value
+            const data = { user_id: district_id}
+            let url = " {% url 'ebankapp:branch' %} "
+
+fetch(url, {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+    'X-CSRFToken': csrftoken
+  },
+  body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data[0]['name']);
+
+
+  for(let i = 0; i<data.length; i++){
+      branch_field.innerHTML += `<option value = "${data[i]["id"]}" selescted>${data[i]["name"]}</option>`
+
+  }
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+        }
+
+
+
+
+
+
+        let input = document.getElementById("id_name")
+        let select = document.getElementsByTagName("select")
+        console.log(select)
+
+        input.classList.add("form-control")
+
+        for(let i = 0; i <select.length; i++){
+            select[i].classList.add("form-select")
+        }
+    </script>
+<div class="site-section" id="next">
+<div class="container">
+<div class="row mb-2">
+</div>
+</div>
+</div>
+
+</div>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"81d1b63a8b693ab7","version":"2023.10.0","token":"cd0b4b3a733644fc843ef0b185f98241"}' crossorigin="anonymous"></script>
+</body>
+</html>

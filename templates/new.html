@@ -1,0 +1,80 @@
+<!-- new.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Application Submitted</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa; /* Light gray background color */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            background-color: #343a40; /* Dark background color for the navigation bar */
+            padding: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            margin-right: 20px;
+        }
+
+        li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #343a40; /* Dark text color */
+        }
+
+        p {
+            color: #6c757d; /* Text color slightly lighter than the background */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'ebankapp:index' %}">Home</a></li>
+            <li><a href="{% url 'credentials:logout' %}">Logout</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <h2>New Application Submitted</h2>
+                <p>Your application has been accepted. Thank you!</p>
+                <!-- Add other content or buttons as needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add your scripts or include jQuery/Bootstrap JS if needed -->
+</body>
+
+</html>
